@@ -1,6 +1,7 @@
 package com.springbootDemo.springbootDemo.controller;
 
 import com.springbootDemo.springbootDemo.entity.Department;
+import com.springbootDemo.springbootDemo.error.DepartmentNotFoundException;
 import com.springbootDemo.springbootDemo.service.DepartmentService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -29,7 +30,8 @@ public class DepartmentController {
 
 //    Fetch data by specific Id
     @GetMapping("/departments/{id}")
-    public Department fetchDepartmentbyId(@PathVariable("id") Long departmentId){
+    public Department fetchDepartmentbyId(@PathVariable("id") Long departmentId)
+            throws DepartmentNotFoundException {
         return departmentService.fetchDepartmentById(departmentId);
     }
 
